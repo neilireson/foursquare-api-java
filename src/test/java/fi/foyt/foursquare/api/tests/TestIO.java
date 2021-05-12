@@ -1,13 +1,10 @@
 package fi.foyt.foursquare.api.tests;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import fi.foyt.foursquare.api.io.IOHandler;
@@ -27,28 +24,27 @@ public class TestIO extends IOHandler {
       int queryStart = url.indexOf("?");
       String searchUrl = url.substring(0, queryStart);
       String query = url.substring(queryStart + 1);
-      Iterator<String> parameters = Arrays.asList(query.split("&")).iterator();
-      
-      while (parameters.hasNext()) {
-        String[] p = parameters.next().split("=");
-        
+
+      for (String s : query.split("&")) {
+        String[] p = s.split("=");
+
         boolean authToken = "oauth_token".equals(p[0]);
-        
+
         if (authToken) {
           if ("null".equals(p[1]))
             return new Response("", 401, "Unauthorized");
         }
-  
+
         boolean clientParam = "client_id".equals(p[0]) || "client_secret".equals(p[0]);
-        boolean versionParam = "v".equals(p[0]);      
+        boolean versionParam = "v".equals(p[0]);
         boolean callbackParam = "callback".equals(p[0]);
-        
+
         if (!clientParam && !authToken && !versionParam && !callbackParam) {
           if (searchUrlParametersBuilder.length() > 0)
             searchUrlParametersBuilder.append('&');
-          searchUrlParametersBuilder.append(p[0] + "=" + p[1]);
-        } 
-        
+          searchUrlParametersBuilder.append(p[0]).append("=").append(p[1]);
+        }
+
         if (callbackParam)
           callback = true;
       }

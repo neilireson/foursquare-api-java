@@ -1,8 +1,5 @@
 package fi.foyt.foursquare.api.tests;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -22,6 +19,8 @@ import fi.foyt.foursquare.api.entities.notifications.ScoreNotification;
 import fi.foyt.foursquare.api.entities.notifications.TipAlertNotification;
 import fi.foyt.foursquare.api.entities.notifications.TipNotification;
 
+import static org.junit.Assert.*;
+
 public class Notifications {
   
   @Test
@@ -33,8 +32,8 @@ public class Notifications {
     assertEquals(NotificationType.Mayorship, NotificationType.getByName("mayorship"));
     assertEquals(NotificationType.Message, NotificationType.getByName("message"));
     assertEquals(NotificationType.Score, NotificationType.getByName("score"));
-    assertEquals(null, NotificationType.getByName("nonsense"));
-    assertEquals(null, NotificationType.getByName(""));
+    assertNull(NotificationType.getByName("nonsense"));
+    assertNull(NotificationType.getByName(""));
   }
 
   @SuppressWarnings("unchecked")
@@ -68,8 +67,8 @@ public class Notifications {
 
     assertEquals(mayorshipNotification.getType(), NotificationType.Mayorship);
     assertEquals("nochange", mayorshipNotification.getItem().getType());
-    assertEquals(new Long(48), mayorshipNotification.getItem().getCheckins());
-    assertEquals(new Long(48), mayorshipNotification.getItem().getDaysBehind());
+    assertEquals(Long.valueOf(48), mayorshipNotification.getItem().getCheckins());
+    assertEquals(Long.valueOf(48), mayorshipNotification.getItem().getDaysBehind());
     assertEquals("942305", mayorshipNotification.getItem().getUser().getId());
     assertEquals("Edizen A. is the Mayor of Tompkins Square Park.", mayorshipNotification.getItem().getMessage());
     assertEquals("https://playfoursquare.s3.amazonaws.com/userpix_thumbs/JU3OOSS5L3UCO1IN.jpg", mayorshipNotification.getItem().getImage());
@@ -77,31 +76,31 @@ public class Notifications {
     assertEquals(leaderboardNotification.getType(), NotificationType.Leaderboard);
     LeaderboardItem leaderboardItem1 = leaderboardNotification.getItem().getLeaderboard()[0];
     assertEquals("7613255", leaderboardItem1.getUser().getId());
-    assertEquals(new Long(35), leaderboardItem1.getScores().getRecent());
-    assertEquals(new Long(35), leaderboardItem1.getScores().getMax());
-    assertEquals(new Long(50), leaderboardItem1.getScores().getGoal());
-    assertEquals(new Long(3), leaderboardItem1.getScores().getCheckinsCount());
-    assertEquals(new Integer(1), leaderboardItem1.getRank());
+    assertEquals(Long.valueOf(35), leaderboardItem1.getScores().getRecent());
+    assertEquals(Long.valueOf(35), leaderboardItem1.getScores().getMax());
+    assertEquals(Long.valueOf(50), leaderboardItem1.getScores().getGoal());
+    assertEquals(Long.valueOf(3), leaderboardItem1.getScores().getCheckinsCount());
+    assertEquals(Integer.valueOf(1), leaderboardItem1.getRank());
     assertEquals("With that last check-in you've hit your best week ever!", leaderboardNotification.getItem().getMessage());
-    assertEquals(new Integer(5), leaderboardNotification.getItem().getScores()[0].getPoints());
+    assertEquals(Integer.valueOf(5), leaderboardNotification.getItem().getScores()[0].getPoints());
     assertEquals("https://playfoursquare.s3.amazonaws.com/static/img/points/foursquare.png", leaderboardNotification.getItem().getScores()[0].getIcon());
     assertEquals("Welcome to foursquare and congrats on your first check-in!", leaderboardNotification.getItem().getScores()[0].getMessage());
-    assertEquals(new Long(11), leaderboardNotification.getItem().getTotal());
+    assertEquals(Long.valueOf(11), leaderboardNotification.getItem().getTotal());
 
     assertEquals(tipNotification.getType(), NotificationType.Tip);
     assertEquals("4a67c84970c603bb3d408eb4", tipNotification.getItem().getTip().getId());
-    assertEquals(new Long(1248315465), tipNotification.getItem().getTip().getCreatedAt());
+    assertEquals(Long.valueOf(1248315465), tipNotification.getItem().getTip().getCreatedAt());
     assertEquals("watch out for the rats and hippie bums at night!", tipNotification.getItem().getTip().getText());
-    assertEquals(new Long(0), tipNotification.getItem().getTip().getTodo().getCount());
-    assertEquals(new Long(6), tipNotification.getItem().getTip().getDone().getCount());
+    assertEquals(Long.valueOf(0), tipNotification.getItem().getTip().getTodo().getCount());
+    assertEquals(Long.valueOf(6), tipNotification.getItem().getTip().getDone().getCount());
     assertEquals("21239", tipNotification.getItem().getTip().getUser().getId());
     assertEquals("Popular tip", tipNotification.getItem().getName());
 
     assertEquals(scoreNotification.getType(), NotificationType.Score);
-    assertEquals(new Integer(5), scoreNotification.getItem().getScores()[0].getPoints());
+    assertEquals(Integer.valueOf(5), scoreNotification.getItem().getScores()[0].getPoints());
     assertEquals("/img/points/foursquare.png", scoreNotification.getItem().getScores()[0].getIcon());
     assertEquals("Welcome to foursquare and congrats on your first check-in!", scoreNotification.getItem().getScores()[0].getMessage());
-    assertEquals(new Long(11), scoreNotification.getItem().getTotal());
+    assertEquals(Long.valueOf(11), scoreNotification.getItem().getTotal());
   }
 
   @Test
@@ -117,10 +116,10 @@ public class Notifications {
 
     assertEquals(tipAlertNotification.getType(), NotificationType.TipAlert);
     assertEquals("4bb8f41970c603bb64bf96b4", tipAlertNotification.getItem().getTip().getId());
-    assertEquals(new Long(1270412313), tipAlertNotification.getItem().getTip().getCreatedAt());
+    assertEquals(Long.valueOf(1270412313), tipAlertNotification.getItem().getTip().getCreatedAt());
     assertEquals("Mitä KB:asä ei olisi hyvää, progea, hyvää kaljaa ja loistavaa seuraa", tipAlertNotification.getItem().getTip().getText());
-    assertEquals(new Long(2), tipAlertNotification.getItem().getTip().getTodo().getCount());
-    assertEquals(new Long(6), tipAlertNotification.getItem().getTip().getDone().getCount());
+    assertEquals(Long.valueOf(2), tipAlertNotification.getItem().getTip().getTodo().getCount());
+    assertEquals(Long.valueOf(6), tipAlertNotification.getItem().getTip().getDone().getCount());
     assertEquals("4bb634f2ef159c74e79475f7", tipAlertNotification.getItem().getTip().getVenue().getId());
     assertEquals("698591", tipAlertNotification.getItem().getTip().getUser().getId());
   }

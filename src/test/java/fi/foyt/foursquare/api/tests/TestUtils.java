@@ -1,13 +1,15 @@
 package fi.foyt.foursquare.api.tests;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 import fi.foyt.foursquare.api.FoursquareApi;
+
+import static fi.foyt.foursquare.api.FoursquareApi.CLIENT_ID_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.FoursquareApi.CLIENT_SECRET_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.FoursquareApi.REDIRECT_URL_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.FoursquareApi.OAUTH_TOKEN_PROPERTY_KEY;
 
 public class TestUtils {
 
@@ -27,18 +29,18 @@ public class TestUtils {
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
     
     byte[] buf = new byte[1024];
-    int l = 0;
     InputStream in = TestUtils.class.getResourceAsStream(path);
-   
+
+    int l;
     while ((l = in.read(buf)) > 0) {
       bos.write(buf, 0, l);
     }
     
     return bos.toByteArray();
   }
-  
-  private final static String CLIENT_ID = "FAKE_CLIENT_ID";
-  private final static String CLIENT_SECRET = "FAKE_CLIENT_SECRET";
-  private final static String REDIRECT_URL = "FAKE_REDIRECT_URL";
-  private final static String OAUTH = "FAKE_OAUTH";
+
+  private final static String CLIENT_ID = System.getProperty(CLIENT_ID_PROPERTY_KEY,"FAKE_CLIENT_ID");
+  private final static String CLIENT_SECRET = System.getProperty(CLIENT_SECRET_PROPERTY_KEY,"FAKE_CLIENT_SECRET");
+  private final static String REDIRECT_URL = System.getProperty(REDIRECT_URL_PROPERTY_KEY,"FAKE_REDIRECT_URL");
+  private final static String OAUTH = System.getProperty(OAUTH_TOKEN_PROPERTY_KEY,"FAKE_OAUTH");
 }

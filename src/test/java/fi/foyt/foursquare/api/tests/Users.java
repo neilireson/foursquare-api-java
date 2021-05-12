@@ -36,24 +36,24 @@ public class Users {
     assertEquals(false, user.getPings());
     assertEquals("development@foyt.fi", user.getContact().getEmail());
     assertEquals("100002112406948", user.getContact().getFacebook());
-    assertEquals(new Long(1), user.getBadges().getCount());
-    assertEquals(new Long(0), user.getMayorships().getCount());
-    assertEquals(new Long(9), user.getCheckins().getCount());
-    assertEquals(new Long(0), user.getFollowing().getCount());
-    assertEquals(new Long(0), user.getRequests().getCount());
-    assertEquals(new Long(0), user.getTips().getCount());
-    assertEquals(new Long(0), user.getTodos().getCount());
-    assertEquals(new Long(35), user.getScores().getRecent());
-    assertEquals(new Long(35), user.getScores().getMax());
-    assertEquals(new Long(50), user.getScores().getGoal());
-    assertEquals(new Long(3), user.getScores().getCheckinsCount());
+    assertEquals(Long.valueOf(1), user.getBadges().getCount());
+    assertEquals(Long.valueOf(0), user.getMayorships().getCount());
+    assertEquals(Long.valueOf(9), user.getCheckins().getCount());
+    assertEquals(Long.valueOf(0), user.getFollowing().getCount());
+    assertEquals(Long.valueOf(0), user.getRequests().getCount());
+    assertEquals(Long.valueOf(0), user.getTips().getCount());
+    assertEquals(Long.valueOf(0), user.getTodos().getCount());
+    assertEquals(Long.valueOf(35), user.getScores().getRecent());
+    assertEquals(Long.valueOf(35), user.getScores().getMax());
+    assertEquals(Long.valueOf(50), user.getScores().getGoal());
+    assertEquals(Long.valueOf(3), user.getScores().getCheckinsCount());
 
     UserGroups friends = user.getFriends();
 
-    assertEquals(new Long(2), friends.getCount());
+    assertEquals(Long.valueOf(2), friends.getCount());
     UserGroup friendsGroup = friends.getGroups()[0];
 
-    assertEquals(new Long(2), friendsGroup.getCount());
+    assertEquals(Long.valueOf(2), friendsGroup.getCount());
     assertEquals("others", friendsGroup.getType());
     assertEquals("other friends", friendsGroup.getName());
     
@@ -74,27 +74,27 @@ public class Users {
     assertEquals("brand", user.getType());
     assertEquals(true, user.getPings());
     assertEquals("mashable", user.getContact().getTwitter());
-    assertEquals(new Long(0), user.getBadges().getCount());
-    assertEquals(new Long(0), user.getMayorships().getCount());
-    assertEquals(new Long(71), user.getCheckins().getCount());
-    assertEquals(new Long(0), user.getFollowing().getCount());
-    assertEquals(new Long(93702), user.getFollowers().getCount());
-    assertEquals(new Long(110), user.getTips().getCount());
-    assertEquals(new Long(0), user.getTodos().getCount());
-    assertEquals(new Long(0), user.getScores().getRecent());
-    assertEquals(new Long(0), user.getScores().getMax());
-    assertEquals(new Long(50), user.getScores().getGoal());
-    assertEquals(new Long(0), user.getScores().getCheckinsCount());
+    assertEquals(Long.valueOf(0), user.getBadges().getCount());
+    assertEquals(Long.valueOf(0), user.getMayorships().getCount());
+    assertEquals(Long.valueOf(71), user.getCheckins().getCount());
+    assertEquals(Long.valueOf(0), user.getFollowing().getCount());
+    assertEquals(Long.valueOf(93702), user.getFollowers().getCount());
+    assertEquals(Long.valueOf(110), user.getTips().getCount());
+    assertEquals(Long.valueOf(0), user.getTodos().getCount());
+    assertEquals(Long.valueOf(0), user.getScores().getRecent());
+    assertEquals(Long.valueOf(0), user.getScores().getMax());
+    assertEquals(Long.valueOf(50), user.getScores().getGoal());
+    assertEquals(Long.valueOf(0), user.getScores().getCheckinsCount());
 
     UserGroups friends = user.getFriends();
     UserGroup mutualFriendGroup = friends.getGroups()[0];
     UserGroup otherFriendGroup = friends.getGroups()[1];
 
-    assertEquals(new Long(93702), otherFriendGroup.getCount());
+    assertEquals(Long.valueOf(93702), otherFriendGroup.getCount());
     assertEquals("others", otherFriendGroup.getType());
     assertEquals("other friends", otherFriendGroup.getName());
 
-    assertEquals(new Long(0), mutualFriendGroup.getCount());
+    assertEquals(Long.valueOf(0), mutualFriendGroup.getCount());
     assertEquals("friends", mutualFriendGroup.getType());
     assertEquals("mutual friends", mutualFriendGroup.getName());
   }
@@ -103,19 +103,19 @@ public class Users {
   public final void testUsersCheckins() throws FoursquareApiException {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     CheckinGroup checkins = foursquareApi.usersCheckins("self", null, null, null, null).getResult();
-    assertEquals(new Long(6), checkins.getCount());
+    assertEquals(Long.valueOf(6), checkins.getCount());
     Checkin checkin = checkins.getItems()[0];
     assertEquals("4de3212d2271bfb844acdf5d", checkin.getId());
-    assertEquals(new Long(1306730797), checkin.getCreatedAt());
+    assertEquals(Long.valueOf(1306730797), checkin.getCreatedAt());
     assertEquals(true, checkin.isPrivate());
     assertEquals("Europe/Helsinki", checkin.getTimeZone());
     assertEquals("4c6bbfafa48420a1b09a0a0b", checkin.getVenue().getId());
     
     checkins = foursquareApi.usersCheckins(null, null, null, null, null).getResult();
-    assertEquals(new Long(6), checkins.getCount());
+    assertEquals(Long.valueOf(6), checkins.getCount());
     checkin = checkins.getItems()[0];
     assertEquals("4de3212d2271bfb844acdf5d", checkin.getId());
-    assertEquals(new Long(1306730797), checkin.getCreatedAt());
+    assertEquals(Long.valueOf(1306730797), checkin.getCreatedAt());
     assertEquals(true, checkin.isPrivate());
     assertEquals("Europe/Helsinki", checkin.getTimeZone());
     assertEquals("4c6bbfafa48420a1b09a0a0b", checkin.getVenue().getId());
@@ -137,7 +137,7 @@ public class Users {
   public final void testUsersFriends() throws FoursquareApiException {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     UserGroup users = foursquareApi.usersFriends("self").getResult();
-    assertEquals(new Long(2), users.getCount());
+    assertEquals(Long.valueOf(2), users.getCount());
     CompactUser user1 = users.getItems()[0];
 
     assertEquals("7613255", user1.getId());
@@ -158,7 +158,7 @@ public class Users {
     assertEquals("followingThem", user2.getRelationship());
     
     users = foursquareApi.usersFriends(null).getResult();
-    assertEquals(new Long(2), users.getCount());
+    assertEquals(Long.valueOf(2), users.getCount());
     user1 = users.getItems()[0];
 
     assertEquals("7613255", user1.getId());
@@ -225,14 +225,14 @@ public class Users {
   public final void testUsersLeaderboard() throws FoursquareApiException {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<LeaderboardItemGroup> result = foursquareApi.usersLeaderboard(null);
-    assertEquals(new Integer(200), result.getMeta().getCode());
-    assertEquals(new Long(1), result.getResult().getCount());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
+    assertEquals(Long.valueOf(1), result.getResult().getCount());
     assertEquals("10078668", result.getResult().getItems()[0].getUser().getId());
-    assertEquals(new Long(0), result.getResult().getItems()[0].getScores().getRecent());
-    assertEquals(new Long(11), result.getResult().getItems()[0].getScores().getMax());
-    assertEquals(new Long(50), result.getResult().getItems()[0].getScores().getGoal());
-    assertEquals(new Long(0), result.getResult().getItems()[0].getScores().getCheckinsCount());
-    assertEquals(new Integer(1), result.getResult().getItems()[0].getRank());
+    assertEquals(Long.valueOf(0), result.getResult().getItems()[0].getScores().getRecent());
+    assertEquals(Long.valueOf(11), result.getResult().getItems()[0].getScores().getMax());
+    assertEquals(Long.valueOf(50), result.getResult().getItems()[0].getScores().getGoal());
+    assertEquals(Long.valueOf(0), result.getResult().getItems()[0].getScores().getCheckinsCount());
+    assertEquals(Integer.valueOf(1), result.getResult().getItems()[0].getRank());
   }
   
   @Test
@@ -240,7 +240,7 @@ public class Users {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<Badges> result = foursquareApi.usersBadges("self");
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("all", result.getResult().getSets().getGroups()[0].getType());
     assertEquals("all badges", result.getResult().getSets().getGroups()[0].getName());
     assertEquals("https://foursquare.com/img/badge/", result.getResult().getSets().getGroups()[0].getImage().getPrefix());
@@ -268,14 +268,14 @@ public class Users {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<TipGroup> result = foursquareApi.usersTips(null, "recent", null, null, null);
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("4df1ec5045dd4e269339e96f", result.getResult().getItems()[0].getId());
-    assertEquals(new Long(1307700304), result.getResult().getItems()[0].getCreatedAt());
+    assertEquals(Long.valueOf(1307700304), result.getResult().getItems()[0].getCreatedAt());
     assertEquals("Wonderful festival called Beautiful Days here at 19, 20 & 21 of August 2011", result.getResult().getItems()[0].getText());
     assertEquals("http://www.beautifuldays.org", result.getResult().getItems()[0].getUrl());
     assertEquals("done", result.getResult().getItems()[0].getStatus());
-    assertEquals(new Long(0), result.getResult().getItems()[0].getTodo().getCount());
-    assertEquals(new Long(1), result.getResult().getItems()[0].getDone().getCount());
+    assertEquals(Long.valueOf(0), result.getResult().getItems()[0].getTodo().getCount());
+    assertEquals(Long.valueOf(1), result.getResult().getItems()[0].getDone().getCount());
     assertEquals("4bb73a402ea19521b1a6ac2f", result.getResult().getItems()[0].getVenue().getId());
   }
   
@@ -284,9 +284,9 @@ public class Users {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<TodoGroup> result = foursquareApi.usersTodos(null, "recent", null);
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("4df203b045dd4e26933a50ed", result.getResult().getItems()[0].getId());
-    assertEquals(new Long(1307706288), result.getResult().getItems()[0].getCreatedAt());
+    assertEquals(Long.valueOf(1307706288), result.getResult().getItems()[0].getCreatedAt());
     assertEquals("4bb8f41970c603bb64bf96b4", result.getResult().getItems()[0].getTip().getId());
   }
   
@@ -295,9 +295,9 @@ public class Users {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<VenueHistoryGroup> result = foursquareApi.usersVenueHistory(null, null, null);
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("4c6bbfafa48420a1b09a0a0b", result.getResult().getItems()[0].getVenue().getId());
-    assertEquals(new Integer(1), result.getResult().getItems()[0].getBeenHere());
+    assertEquals(Integer.valueOf(1), result.getResult().getItems()[0].getBeenHere());
   }
   
   @Test
@@ -305,7 +305,7 @@ public class Users {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<CompleteUser> result = foursquareApi.usersSetPings("10078668", "true");
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("10078668", result.getResult().getId());
   }
   

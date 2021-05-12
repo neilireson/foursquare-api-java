@@ -1,7 +1,5 @@
 package fi.foyt.foursquare.api.entities;
 
-import java.util.List;
-
 import fi.foyt.foursquare.api.FoursquareEntity;
 
 /**

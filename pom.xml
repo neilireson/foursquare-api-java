@@ -23,18 +23,18 @@
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
-			<version>20090211</version>
+			<version>20210307</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.12</version>
+			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>1.9.22</version>
+			<version>1.9.88</version>
 			<!-- not required by typical or Android usage. see https://github.com/clinejj/foursquare-api-java/issues/1 -->
 			<optional>true</optional>
 		</dependency>

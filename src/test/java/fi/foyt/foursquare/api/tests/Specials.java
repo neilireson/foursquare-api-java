@@ -34,7 +34,7 @@ public class Specials {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     SpecialGroup specialGroup = foursquareApi.specialsSearch("40.7,-73.9", null, null, null, null).getResult();
     
-    assertEquals(specialGroup.getCount(), new Long(28));
+    assertEquals(specialGroup.getCount(), Long.valueOf(28));
     assertEquals(specialGroup.getItems().length, 28);
     
     CompleteSpecial completeSpecial = specialGroup.getItems()[0];

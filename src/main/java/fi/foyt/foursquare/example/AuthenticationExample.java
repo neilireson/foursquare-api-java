@@ -14,7 +14,7 @@ import fi.foyt.foursquare.api.FoursquareApiException;
  */
 public class AuthenticationExample {
 	  public void authenticationRequest(HttpServletRequest request, HttpServletResponse response) {
-		    FoursquareApi foursquareApi = new FoursquareApi("Client ID", "Client Secret", "Callback URL");
+		    FoursquareApi foursquareApi = new FoursquareApi();
 		    try {
 		      // First we need to redirect our user to authentication page. 
 		      response.sendRedirect(foursquareApi.getAuthenticationUrl());
@@ -26,7 +26,7 @@ public class AuthenticationExample {
 		  public void handleCallback(HttpServletRequest request, HttpServletResponse response) {
 		    // After user has logged in and confirmed that our program may access user's Foursquare account
 		    // Foursquare redirects user back to callback url. 
-		    FoursquareApi foursquareApi = new FoursquareApi("Client ID", "Client Secret", "Callback URL");
+		    FoursquareApi foursquareApi = new FoursquareApi();
 		    // Callback url contains authorization code 
 		    String code = request.getParameter("code");
 		    try {

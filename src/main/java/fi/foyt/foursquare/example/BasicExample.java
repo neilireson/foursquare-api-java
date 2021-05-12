@@ -25,7 +25,7 @@ public class BasicExample {
 
 	  public void searchVenues(String ll) throws FoursquareApiException {
 	    // First we need a initialize FoursquareApi. 
-	    FoursquareApi foursquareApi = new FoursquareApi("Client ID", "Client Secret", "Callback URL");
+	    FoursquareApi foursquareApi = new FoursquareApi();
 	    
 	    // After client has been initialized we can make queries.
 	    Result<VenuesSearchResult> result = foursquareApi.venuesSearch(ll, null, null, null, null, null, null, null, null, null, null, null, null);

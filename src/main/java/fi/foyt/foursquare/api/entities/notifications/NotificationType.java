@@ -20,7 +20,7 @@ public enum NotificationType {
    * 
    * @param name JSON name
    */
-  private NotificationType(String name) {
+  NotificationType(String name) {
     this.name = name;
   }
   

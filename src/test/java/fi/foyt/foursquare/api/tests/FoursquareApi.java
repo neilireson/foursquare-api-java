@@ -83,7 +83,7 @@ public class FoursquareApi {
     foursquareApi.setUseCallback(false);
     assertFalse(foursquareApi.getUseCallback());
     Result<CompleteUser> result = foursquareApi.user("nonexisting");
-    assertEquals(new Integer(404), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(404), result.getMeta().getCode());
     assertEquals("Not Found", result.getMeta().getErrorDetail());
     assertNull(result.getResult());
   }
@@ -94,7 +94,7 @@ public class FoursquareApi {
     foursquareApi.setUseCallback(true);
     assertTrue(foursquareApi.getUseCallback());
     Result<CompleteUser> result = foursquareApi.user("gibberish");
-    assertEquals(new Integer(400), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(400), result.getMeta().getCode());
     assertEquals("param_error", result.getMeta().getErrorType());
     assertEquals("Must provide a valid user ID or 'self.'", result.getMeta().getErrorDetail());
     assertNull(result.getResult());

@@ -280,12 +280,10 @@ public class JSONFieldParser {
    * @return setter method for a field
    */
   private static Method getSetterMethod(Class<?> entityClass, String fieldName) {
-    StringBuilder methodNameBuilder = new StringBuilder();
-    methodNameBuilder.append("set");
-    methodNameBuilder.append(Character.toUpperCase(fieldName.charAt(0)));
-    methodNameBuilder.append(fieldName.substring(1));
-    
-    String methodName = methodNameBuilder.toString();
+
+    String methodName = "set" +
+            Character.toUpperCase(fieldName.charAt(0)) +
+            fieldName.substring(1);
     
     List<Method> methods = getMethods(entityClass);
     for (Method method : methods) {
@@ -336,7 +334,11 @@ public class JSONFieldParser {
    */
   private static FoursquareEntity createNewEntity(Class<?> clazz) {
     try {
-      return (FoursquareEntity) clazz.newInstance();
+      return (FoursquareEntity) clazz.getDeclaredConstructor().newInstance();
+    } catch (InvocationTargetException e) {
+      return null;
+    } catch (NoSuchMethodException e) {
+      return null;
     } catch (InstantiationException e) {
       return null;
     } catch (IllegalAccessException e) {

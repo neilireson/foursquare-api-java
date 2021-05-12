@@ -83,31 +83,29 @@ public class DefaultIOHandler extends IOHandler {
         connection.connect();
 
         OutputStream outputStream = connection.getOutputStream();
-        
-        StringBuffer startBoundaryBuilder = new StringBuffer("--")
-          .append(BOUNDARY)
-          .append("\r\n");
-        
-        outputStream.write(startBoundaryBuilder.toString().getBytes());
+
+        String startBoundaryBuilder = "--" +
+                BOUNDARY +
+                "\r\n";
+        outputStream.write(startBoundaryBuilder.getBytes());
         
         for (MultipartParameter parameter : parameters) {
-          StringBuffer formDataBuilder = new StringBuffer()
-            .append("Content-Disposition: form-data; name=\"")
-            .append(parameter.getName())
-            .append("\"; filename=\"")
-            .append(parameter.getName())
-            .append("\"\r\n")
-            .append("Content-Type: ")
-            .append(parameter.getContentType())
-            .append("\r\n\r\n");
-          outputStream.write(formDataBuilder.toString().getBytes());
+          String formDataBuilder = "Content-Disposition: form-data; name=\"" +
+                  parameter.getName() +
+                  "\"; filename=\"" +
+                  parameter.getName() +
+                  "\"\r\n" +
+                  "Content-Type: " +
+                  parameter.getContentType() +
+                  "\r\n\r\n";
+          outputStream.write(formDataBuilder.getBytes());
           outputStream.write(parameter.getContent());
         }
-        
-        StringBuilder endBoundaryBuilder = new StringBuilder("\r\n--")
-          .append(BOUNDARY)
-          .append("--\r\n");
-        outputStream.write(endBoundaryBuilder.toString().getBytes());
+
+        String endBoundaryBuilder = "\r\n--" +
+                BOUNDARY +
+                "--\r\n";
+        outputStream.write(endBoundaryBuilder.getBytes());
         
         outputStream.flush();
         outputStream.close();

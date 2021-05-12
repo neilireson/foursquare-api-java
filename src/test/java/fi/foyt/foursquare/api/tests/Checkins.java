@@ -21,14 +21,14 @@ public class Checkins {
     Checkin checkin = foursquareApi.checkin("4d627f6814963704dc28ff94", "LPtzP4edmpbaspdKhI9-892UoFM").getResult();
 
     assertEquals("4d627f6814963704dc28ff94", checkin.getId());
-    assertEquals(new Long(1298300776), checkin.getCreatedAt());
+    assertEquals(Long.valueOf(1298300776), checkin.getCreatedAt());
     assertEquals("checkin", checkin.getType());
     assertEquals("Another one of these days. #snow", checkin.getShout());
     assertEquals("America/New_York", checkin.getTimeZone());
     assertEquals("32", checkin.getUser().getId());
     assertEquals("408c5100f964a520c6f21ee3", checkin.getVenue().getId());
     assertNotNull(checkin.getSource());
-    assertEquals(new Long(1), checkin.getPhotos().getCount());
+    assertEquals(Long.valueOf(1), checkin.getPhotos().getCount());
   }
   
   @Test
@@ -38,12 +38,12 @@ public class Checkins {
     Checkin checkin = result.getResult();
     
     assertEquals("4de470c0ae60e7f3ac1f0fa7", checkin.getId());
-    assertEquals(new Long(1306816704), checkin.getCreatedAt());
+    assertEquals(Long.valueOf(1306816704), checkin.getCreatedAt());
     assertEquals("venueless", checkin.getType());
     assertEquals("Europe/Istanbul", checkin.getTimeZone());
     assertEquals("Test", checkin.getLocation().getName());
-    assertEquals(new Double(40), checkin.getLocation().getLat());
-    assertEquals(new Double(40), checkin.getLocation().getLng());
+    assertEquals(Double.valueOf(40), checkin.getLocation().getLat());
+    assertEquals(Double.valueOf(40), checkin.getLocation().getLng());
   }
   
   @Test
@@ -53,10 +53,10 @@ public class Checkins {
 
     assertEquals("4d7b44d7f260a0932e5024ba", checkin.getId());
     CommentGroup comments = checkin.getComments();
-    assertEquals(new Long(1), comments.getCount());
+    assertEquals(Long.valueOf(1), comments.getCount());
     Comment comment = comments.getItems()[0];
     assertEquals("4d7b457a8f89224b8ab38d26", comment.getId());
-    assertEquals(new Long(1299924346), comment.getCreatedAt());
+    assertEquals(Long.valueOf(1299924346), comment.getCreatedAt());
     assertEquals("7613255", comment.getUser().getId());
     assertEquals("Test", comment.getText());
   }
@@ -68,10 +68,10 @@ public class Checkins {
 
     assertEquals("4de4762d52b1d38d299e6000", checkin.getId());
     CheckinGroup checkinGroup = checkin.getOverlaps();
-    assertEquals(new Long(1), checkinGroup.getCount());
+    assertEquals(Long.valueOf(1), checkinGroup.getCount());
     Checkin overlap = checkinGroup.getItems()[0];
     assertEquals("4de476257d8b2547eb33ea23", overlap.getId());
-    assertEquals(new Long(1306818085), overlap.getCreatedAt());
+    assertEquals(Long.valueOf(1306818085), overlap.getCreatedAt());
     assertEquals("checkin", overlap.getType());
     assertEquals("America/New_York", overlap.getTimeZone());
     assertEquals("7613255", overlap.getUser().getId());
@@ -84,7 +84,7 @@ public class Checkins {
     Checkin checkin = result.getResult();
     
     assertEquals("4de3212d2271bfb844acdf5d", checkin.getId());
-    assertEquals(new Long(1306730797), checkin.getCreatedAt());
+    assertEquals(Long.valueOf(1306730797), checkin.getCreatedAt());
     assertEquals("checkin", checkin.getType());
     assertEquals("Europe/Helsinki", checkin.getTimeZone());
     assertEquals(true, checkin.isPrivate());
@@ -105,9 +105,9 @@ public class Checkins {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<Comment> result = foursquareApi.checkinsAddComment("4de470c0ae60e7f3ac1f0fa7", "That's very testy!");
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("4df3393b14954f21cf2d7543", result.getResult().getId());
-    assertEquals(new Long(1307785531), result.getResult().getCreatedAt());
+    assertEquals(Long.valueOf(1307785531), result.getResult().getCreatedAt());
     assertEquals("10078668", result.getResult().getUser().getId());
     assertEquals("That's very testy!", result.getResult().getText());
   }
@@ -117,9 +117,9 @@ public class Checkins {
     FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     Result<Checkin> result = foursquareApi.checkinsDeleteComment("4de470c0ae60e7f3ac1f0fa7", "4df3393b14954f21cf2d7543");
     
-    assertEquals(new Integer(200), result.getMeta().getCode());
+    assertEquals(Integer.valueOf(200), result.getMeta().getCode());
     assertEquals("4de470c0ae60e7f3ac1f0fa7", result.getResult().getId());
-    assertEquals(new Long(0), result.getResult().getComments().getCount());
+    assertEquals(Long.valueOf(0), result.getResult().getComments().getCount());
     
   }
 }

@@ -73,12 +73,21 @@ import fi.foyt.foursquare.api.io.Response;
 public class FoursquareApi {
 
   private static final String DEFAULT_VERSION = "20140131";
+  public static final String CLIENT_ID_PROPERTY_KEY = "foursquare.client.id";
+  public static final String CLIENT_SECRET_PROPERTY_KEY = "foursquare.client.secret";
+  public static final String REDIRECT_URL_PROPERTY_KEY = "foursquare.redirect.url";
+  public static final String OAUTH_TOKEN_PROPERTY_KEY = "foursquare.oauth.token";
 
   /**
-   * CDI eyes only
-   * @deprecated CDI eyes only
+   * Attempt to get the client credentials from JAVA VM Options
+   *  -Dfoursquare.client.id=XXX
+   *  -Dfoursquare.client.secret=XXX
+   *  -Dfoursquare.redirect.url=XXX
    */
   public FoursquareApi() {
+    this.clientId = System.getProperty(CLIENT_ID_PROPERTY_KEY);
+    this.clientSecret = System.getProperty(CLIENT_SECRET_PROPERTY_KEY);
+    this.redirectUrl = System.getProperty(REDIRECT_URL_PROPERTY_KEY);
   }
 
   /**
@@ -1570,7 +1579,7 @@ public class FoursquareApi {
    * @return user authentication URL
    */
   public String getAuthenticationUrl() {
-    return new StringBuilder("https://foursquare.com/oauth2/authenticate?client_id=").append(this.clientId).append("&response_type=code").append("&redirect_uri=").append(this.redirectUrl).toString();
+    return "https://foursquare.com/oauth2/authenticate?client_id=" + this.clientId + "&response_type=code" + "&redirect_uri=" + this.redirectUrl;
   }
 
   /**
@@ -1704,7 +1713,7 @@ public class FoursquareApi {
       urlBuilder.append(clientSecret);
     }
 
-    urlBuilder.append("&v=" + version);
+    urlBuilder.append("&v=").append(version);
 
     if (useCallback) {
       urlBuilder.append("&callback=c");
