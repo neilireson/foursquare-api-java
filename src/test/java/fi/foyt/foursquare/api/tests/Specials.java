@@ -22,7 +22,7 @@ public class Specials {
     assertEquals("Want 20% off? Check in at RadioShack for the first time & get 20% off your qualifying purchase. Ends 6/30/11. Exclusions apply. Ask associate for details.", completeSpecial.getMessage());
     assertEquals("on your 1st check-in", completeSpecial.getDescription());
     assertEquals(false, completeSpecial.getUnlocked());
-    assertEquals("newbie", completeSpecial.getIcon());
+    assertEquals("newbie", completeSpecial.getIcon().getPrefix());
     assertEquals("Newbie Special", completeSpecial.getTitle());
     assertEquals("locked", completeSpecial.getState());
     assertEquals("foursquare", completeSpecial.getProvider());
@@ -42,7 +42,7 @@ public class Specials {
     assertNotNull(completeSpecial);
     assertEquals("4da37ddb15ad530c110a9d52", completeSpecial.getId());
     assertEquals("Want 20% off? Check in at RadioShack for the first time & get 20% off your qualifying purchase. Ends 6/30/11. Exclusions apply. Ask associate for details.", completeSpecial.getMessage());
-    assertEquals("newbie", completeSpecial.getIcon());
+    assertEquals("newbie", completeSpecial.getIcon().getPrefix());
     assertEquals("Newbie Special", completeSpecial.getTitle());
     assertEquals("foursquare", completeSpecial.getProvider());
     assertEquals("standard", completeSpecial.getRedemption());

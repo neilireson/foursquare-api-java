@@ -36,7 +36,7 @@ public class LeaderboardScore implements FoursquareEntity {
    * 
    * @return icon
    */
-  public String getIcon() {
+  public Icon getIcon() {
     return icon;
   }
   
@@ -50,6 +50,6 @@ public class LeaderboardScore implements FoursquareEntity {
   }
   
   private Integer points;
-  private String icon;
+  private Icon icon;
   private String message;
 }

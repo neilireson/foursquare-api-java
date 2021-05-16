@@ -47,7 +47,7 @@ public class CompleteTip extends CompactTip {
   
   // TODO
   private String canonicalUrl;
-  private String likes;
+  private UserGroups likes;
   private Boolean like;
   private Boolean logView;
 

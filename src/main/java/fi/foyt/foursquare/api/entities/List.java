@@ -29,23 +29,24 @@ public class List implements FoursquareEntity {
   private String name;
   private String description;
   private String type;
-  private String user;
+  private CompactUser user;
   private String following;
-  private String followers;
-  private String editable;
-  private String collaborative;
+  private Count followers;
+  private Boolean editable;
+  private Boolean collaborative;
   private String collaborators;
   private String url;
   private String canonicalUrl;
-  private String photo;
+  private Photo photo;
   private String venueCount;
   private String visitedCount;
-  private String listItems;
-  private String createdAt;
-  private String updatedAt;
+  private ListGroup listItems;
+  private Long createdAt;
+  private Long updatedAt;
   private String entities;
   private Boolean isPublic;
   private Boolean logView;
+  private CompleteTip tip;
 
   public void setPublic(Boolean isPublic) {
     this.isPublic = isPublic;

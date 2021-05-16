@@ -37,4 +37,9 @@ public class FoursquareApiException extends Exception {
   public FoursquareApiException(Throwable t) {
     super(t);
   }
+
+  public FoursquareApiException(String message, Throwable t) {
+    super(message, t);
+  }
+
 }

@@ -158,7 +158,7 @@
                     {
                         "message": "You've traveled 4130 miles since your last check-in!",
                         "points": 5,
-                        "icon": "https://ss1.4sqi.net/img/points/swarm-travel.png"
+                        "icon":{"prefix":"https://ss1.4sqi.net/img/points/swarm-travel","suffix":".png"}
                     }
                 ]
             },

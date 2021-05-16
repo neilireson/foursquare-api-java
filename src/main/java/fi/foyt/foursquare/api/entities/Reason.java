@@ -28,7 +28,18 @@ public class Reason implements FoursquareEntity {
   public String getMessage() {
     return message;
   }
-  
+
+  public String getSummary() {
+    return summary;
+  }
+
+  public String getReasonName() {
+    return reasonName;
+  }
+
   private String type;
   private String message;
+  private String summary;
+  private String reasonName;
+
 }

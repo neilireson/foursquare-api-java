@@ -178,14 +178,15 @@ public class CompleteVenue extends CompactVenue {
   private String timeZone;
   
   // TODO
-  private String reasons;
+  private ReasonGroup reasons;
   private String flags;
   private String roles;
   private String restricted;
-  private String pageUpdates;
-  private String phrases;
-  private String attributes;
+  private PageUpdateGroup pageUpdates;
+  private Phrase[] phrases;
+  private Attributes attributes;
   private String storeId;
+  private TodoGroup todos;
 
   @Override
   public String toString() {

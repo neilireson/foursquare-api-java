@@ -83,7 +83,8 @@ public class Notifications {
     assertEquals(Integer.valueOf(1), leaderboardItem1.getRank());
     assertEquals("With that last check-in you've hit your best week ever!", leaderboardNotification.getItem().getMessage());
     assertEquals(Integer.valueOf(5), leaderboardNotification.getItem().getScores()[0].getPoints());
-    assertEquals("https://playfoursquare.s3.amazonaws.com/static/img/points/foursquare.png", leaderboardNotification.getItem().getScores()[0].getIcon());
+    assertEquals("https://playfoursquare.s3.amazonaws.com/static/img/points/foursquare", leaderboardNotification.getItem().getScores()[0].getIcon().getPrefix());
+    assertEquals(".png", leaderboardNotification.getItem().getScores()[0].getIcon().getSuffix());
     assertEquals("Welcome to foursquare and congrats on your first check-in!", leaderboardNotification.getItem().getScores()[0].getMessage());
     assertEquals(Long.valueOf(11), leaderboardNotification.getItem().getTotal());
 
@@ -98,7 +99,8 @@ public class Notifications {
 
     assertEquals(scoreNotification.getType(), NotificationType.Score);
     assertEquals(Integer.valueOf(5), scoreNotification.getItem().getScores()[0].getPoints());
-    assertEquals("/img/points/foursquare.png", scoreNotification.getItem().getScores()[0].getIcon());
+    assertEquals("/img/points/foursquare", scoreNotification.getItem().getScores()[0].getIcon().getPrefix());
+    assertEquals(".png", scoreNotification.getItem().getScores()[0].getIcon().getSuffix());
     assertEquals("Welcome to foursquare and congrats on your first check-in!", scoreNotification.getItem().getScores()[0].getMessage());
     assertEquals(Long.valueOf(11), scoreNotification.getItem().getTotal());
   }

@@ -181,6 +181,7 @@ public class CompactVenue implements FoursquareEntity {
   
   // TODO
   protected String page;
+  protected TodoGroup todos;
 
   @Override
   public String toString() {

@@ -85,9 +85,9 @@ public class FoursquareApi {
    *  -Dfoursquare.redirect.url=XXX
    */
   public FoursquareApi() {
-    this.clientId = System.getProperty(CLIENT_ID_PROPERTY_KEY);
-    this.clientSecret = System.getProperty(CLIENT_SECRET_PROPERTY_KEY);
-    this.redirectUrl = System.getProperty(REDIRECT_URL_PROPERTY_KEY);
+    this(System.getProperty(CLIENT_ID_PROPERTY_KEY),
+            System.getProperty(CLIENT_SECRET_PROPERTY_KEY),
+            System.getProperty(REDIRECT_URL_PROPERTY_KEY));
   }
 
   /**
@@ -1600,9 +1600,7 @@ public class FoursquareApi {
       } else {
         throw new IOException(response.getMessage());
       }
-    } catch (JSONException e) {
-      throw new FoursquareApiException(e);
-    } catch (IOException e) {
+    } catch (JSONException | IOException e) {
       throw new FoursquareApiException(e);
     }
   }

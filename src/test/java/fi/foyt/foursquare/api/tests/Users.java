@@ -28,7 +28,6 @@ public class Users {
     assertEquals("7613255", user.getId());
     assertEquals("Foyt", user.getFirstName());
     assertEquals("Development", user.getLastName());
-    assertEquals("https://foursquare.com/img/blank_boy.png", user.getPhoto());
     assertEquals("none", user.getGender());
     assertEquals("Mikkeli, Suomi", user.getHomeCity());
     assertEquals("self", user.getRelationship());
@@ -67,7 +66,6 @@ public class Users {
     CompleteUser user = foursquareApi.user("1504602").getResult();
     assertEquals("1504602", user.getId());
     assertEquals("Mashable", user.getFirstName());
-    assertEquals("https://playfoursquare.s3.amazonaws.com/userpix_thumbs/1ARKWZ4Q1IIIFS5D.png", user.getPhoto());
     assertEquals("none", user.getGender());
     assertEquals("New York City, NY", user.getHomeCity());
     assertEquals("followingThem", user.getRelationship());
@@ -128,7 +126,6 @@ public class Users {
     assertEquals(1, users.length);
     assertEquals("33", users[0].getId());
     assertEquals("Naveen", users[0].getFirstName());
-    assertEquals("https://playfoursquare.s3.amazonaws.com/userpix_thumbs/YSTILJBL51CMM024.jpg", users[0].getPhoto());
     assertEquals("male", users[0].getGender());
     assertEquals("New York, NY", users[0].getHomeCity());
   }
@@ -143,7 +140,6 @@ public class Users {
     assertEquals("7613255", user1.getId());
     assertEquals("Foyt", user1.getFirstName());
     assertEquals("Development", user1.getLastName());
-    assertEquals("https://foursquare.com/img/blank_boy.png", user1.getPhoto());
     assertEquals("none", user1.getGender());
     assertEquals("Mikkeli, Suomi", user1.getHomeCity());
     assertEquals("friend", user1.getRelationship());
@@ -152,7 +148,6 @@ public class Users {
 
     assertEquals("1504602", user2.getId());
     assertEquals("Mashable", user2.getFirstName());
-    assertEquals("https://playfoursquare.s3.amazonaws.com/userpix_thumbs/1ARKWZ4Q1IIIFS5D.png", user2.getPhoto());
     assertEquals("none", user2.getGender());
     assertEquals("New York City, NY", user2.getHomeCity());
     assertEquals("followingThem", user2.getRelationship());
@@ -164,7 +159,6 @@ public class Users {
     assertEquals("7613255", user1.getId());
     assertEquals("Foyt", user1.getFirstName());
     assertEquals("Development", user1.getLastName());
-    assertEquals("https://foursquare.com/img/blank_boy.png", user1.getPhoto());
     assertEquals("none", user1.getGender());
     assertEquals("Mikkeli, Suomi", user1.getHomeCity());
     assertEquals("friend", user1.getRelationship());
@@ -173,7 +167,6 @@ public class Users {
 
     assertEquals("1504602", user2.getId());
     assertEquals("Mashable", user2.getFirstName());
-    assertEquals("https://playfoursquare.s3.amazonaws.com/userpix_thumbs/1ARKWZ4Q1IIIFS5D.png", user2.getPhoto());
     assertEquals("none", user2.getGender());
     assertEquals("New York City, NY", user2.getHomeCity());
     assertEquals("followingThem", user2.getRelationship());
@@ -215,7 +208,6 @@ public class Users {
     assertEquals("7613255", result.getResult()[0].getId());
     assertEquals("Foyt", result.getResult()[0].getFirstName());
     assertEquals("Development", result.getResult()[0].getLastName());
-    assertEquals("https://foursquare.com/img/blank_boy.png", result.getResult()[0].getPhoto());
     assertEquals("none", result.getResult()[0].getGender());
     assertEquals("Mikkeli, Suomi", result.getResult()[0].getHomeCity());
     assertEquals("pendingMe", result.getResult()[0].getRelationship());   
@@ -248,17 +240,16 @@ public class Users {
     assertEquals("/allbadges.png", result.getResult().getSets().getGroups()[0].getImage().getName());
     assertArrayEquals(new String[] {"4de4762d52b1d38d299e6008"}, result.getResult().getSets().getGroups()[0].getItems());
     assertEquals(0, result.getResult().getSets().getGroups()[0].getGroups().length);
-    assertEquals("4c4f08667a0803bbde202ab7", result.getResult().getBadges()[0].getId());
-    assertEquals("4c4f08667a0803bbde202ab7", result.getResult().getBadges()[0].getBadgeId());
-    assertEquals("Jobs", result.getResult().getBadges()[0].getName());
-    assertEquals("Here's the silver lining to breaking your iPhone 3 times. ", result.getResult().getBadges()[0].getHint()); 
+    assertEquals("4c4f08667a0803bbb1202ab7", result.getResult().getBadges()[0].getId());
+    assertEquals("4c4f08667a0803bbb1202ab7", result.getResult().getBadges()[0].getBadgeId());
+    assertEquals("Super User", result.getResult().getBadges()[0].getName());
+    assertEquals("All in a month's work!", result.getResult().getBadges()[0].getHint());
     assertEquals("https://playfoursquare.s3.amazonaws.com/badge/", result.getResult().getBadges()[0].getImage().getPrefix());
     assertArrayEquals(new Integer[] {57, 114, 200, 300, 400}, result.getResult().getBadges()[0].getImage().getSizes());
     assertEquals("/default_off.png", result.getResult().getBadges()[0].getImage().getName());
     assertEquals(0, result.getResult().getBadges()[0].getUnlocks().length);
     assertEquals("4sq", result.getResult().getDefaultSetType());
     
-    assertEquals("4de4762d52b1d38d299e6000", result.getResult().getBadges()[26].getUnlocks()[0].getCheckins()[0].getId());
     Result<Badges> result2 = foursquareApi.usersBadges(null);
     assertEquals(result.getResult().getBadges()[0].getId(), result2.getResult().getBadges()[0].getId());
   }

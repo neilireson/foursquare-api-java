@@ -999,7 +999,7 @@
                             "message": "Check in at \"We The People\" at City Hall Park AND Brooklyn Bridge Park and receive a Public Art Fund publication!",
                             "type": "frequency",
                             "id": "539b6c3d498ecebdc381d68f",
-                            "icon": "default"
+                            "icon":{"prefix":"default","suffix":""}
                         }
                     ]
                 },

@@ -78,7 +78,7 @@
                     "message": "Foursquare members 18 and over who check-in to the B&H Superstore during business hours will receive a B&H Signature Backpack or Tote bag with the purchase of $50 or more. One item per person and employees not eligible.",
                     "type": "frequency",
                     "id": "4e7c83e16365116cef70bfe1",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -184,7 +184,7 @@
                     "message": "Try our Tribeca Film Festival cocktail special - the \"Burnham's Folly,\" feat. Bombay Sapphire with Grey Goose Pear, cucumber, jalapeno, lemon & orange.",
                     "type": "frequency",
                     "id": "534c6e14498e44dce0c73f27",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -280,7 +280,7 @@
                     "message": "Check in for a FREE 2014 Coupon Book!.",
                     "type": "frequency",
                     "id": "52cc218411d2d9f58079cb08",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -374,7 +374,7 @@
                     "message": "Get 25 cents off any coffee / espresso drink and 10% off all 12 oz coffee tins!",
                     "type": "frequency",
                     "id": "51252ba345b026783718b7d2",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -461,7 +461,7 @@
                     "message": "Save 10% on any purchases at The New York Public Library Shop. Happy shopping!",
                     "type": "frequency",
                     "id": "506b2f92f31cd15cd741ed76",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -533,7 +533,7 @@
                     "message": "Stop by Guest Services with every check in and receive a special discount from Cups Frozen Yogurt.",
                     "type": "frequency",
                     "id": "5432afb6498e4b1b482122c3",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -594,7 +594,7 @@
                     "message": "Great Deals on Wine!",
                     "type": "frequency",
                     "id": "544feae0498eddcc0f41f32c",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 },
                 {
                     "redemption": "webview",
@@ -669,7 +669,7 @@
                     "message": "Enjoy a free glass of Prosecco on check in when ordering lunch at Manzo.",
                     "type": "frequency",
                     "id": "4d648e0f1d6b2d431baf4c17",
-                    "icon": "default"
+                    "icon":{"prefix":"default","suffix":""}
                 }
             ]
         }

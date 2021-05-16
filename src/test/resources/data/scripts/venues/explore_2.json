@@ -226,7 +226,7 @@
                                         "message": "Get FREE All New Track from PRODIGY of Mobb Deep w/ purchase of his new book MY INFAMOUS LIFE. Show check-in at register to redeem on April 20 @ 7:30pm during his book signing event. Limited quantity.",
                                         "type": "frequency",
                                         "id": "4da4c962bfa5dcb3e9921d44",
-                                        "icon": "default"
+                                        "icon":{"prefix":"default","suffix":""}
                                     }
                                 ]
                             },
@@ -2366,7 +2366,7 @@
                                         "message": "Check-in during your visit and get the BHS Members discount off all merchandise at the BHS gift shop!",
                                         "type": "frequency",
                                         "id": "4f4e77e00cd61513d36c4dcf",
-                                        "icon": "default"
+                                        "icon":{"prefix":"default","suffix":""}
                                     }
                                 ]
                             },

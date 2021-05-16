@@ -23,8 +23,14 @@ public class Icon implements FoursquareEntity {
 		return suffix;
 	}
 
-
-
 	private String prefix;
 	private String suffix;
+
+	@Override
+	public String toString() {
+		return "Icon{" +
+				"prefix='" + prefix + '\'' +
+				", suffix='" + suffix + '\'' +
+				'}';
+	}
 }

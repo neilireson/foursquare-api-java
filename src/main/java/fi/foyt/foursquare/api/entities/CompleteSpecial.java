@@ -81,7 +81,7 @@ public class CompleteSpecial implements FoursquareEntity {
    * 
    * @return the name of the icon
    */
-  public String getIcon() {
+  public Icon getIcon() {
     return icon;
   }
   
@@ -136,7 +136,7 @@ public class CompleteSpecial implements FoursquareEntity {
   private String finePrint;
   private String description;
   private Boolean unlocked;
-  private String icon;
+  private Icon icon;
   private String title;
   private String state;
   private String provider;
