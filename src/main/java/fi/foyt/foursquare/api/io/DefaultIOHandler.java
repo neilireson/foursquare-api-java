@@ -45,16 +45,17 @@ public class DefaultIOHandler extends IOHandler {
         }
         connection.setRequestMethod(method.name());
         connection.connect();
-        
+
         String xRateLimit = connection.getHeaderField("X-RateLimit-Limit");
         String xRateLimitRemaining = connection.getHeaderField("X-RateLimit-Remaining");
+        String xRateLimitReset = connection.getHeaderField("X-RateLimit-Reset");
 
         code = connection.getResponseCode();
         if (code == 200) {
           InputStream inputStream = connection.getInputStream();
-          return new Response(readStream(inputStream), code, connection.getResponseMessage(), xRateLimit, xRateLimitRemaining);
+          return new Response(readStream(inputStream), code, connection.getResponseMessage(), xRateLimit, xRateLimitRemaining, xRateLimitReset);
         } else {
-          return new Response("", code, getMessageByCode(code), xRateLimit, xRateLimitRemaining);
+          return new Response("", code, getMessageByCode(code), xRateLimit, xRateLimitRemaining, xRateLimitReset);
         }
 
       } finally {

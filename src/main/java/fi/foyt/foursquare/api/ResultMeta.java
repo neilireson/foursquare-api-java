@@ -29,12 +29,13 @@ public class ResultMeta {
    * @param rateLimit rate limit
    * @param rateLimitRemaining rate limit remaining
    */
-  public ResultMeta(Integer code, String errorType, String errorDetail, String rateLimit, String rateLimitRemaining) {
+  public ResultMeta(Integer code, String errorType, String errorDetail, String rateLimit, String rateLimitRemaining, String rateLimitReset) {
     this.code = code;
     this.errorType = errorType;
     this.errorDetail = errorDetail;
     this.rateLimit = rateLimit;
     this.rateLimitRemaining = rateLimitRemaining;
+    this.rateLimitReset = rateLimitReset;
   }
 
   /**
@@ -86,11 +87,21 @@ public class ResultMeta {
     return rateLimitRemaining;
   }
 
+  /**
+   * Returns rate limit reset
+   *
+   * @return rate limit reset
+   */
+  public String getRateLimitReset() {
+    return rateLimitReset;
+  }
+
   private Integer code;
   private String errorType;
   private String errorDetail;
   private String rateLimit;
   private String rateLimitRemaining;
+  private String rateLimitReset;
 
   @Override
   public String toString() {
