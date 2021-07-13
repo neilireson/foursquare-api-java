@@ -1,4 +1,5 @@
-package fi.foyt.foursquare.example;
+package fi.foyt.foursquare.cli;
+
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +13,7 @@ import fi.foyt.foursquare.api.FoursquareApiException;
  * @author rmangi
  *
  */
-public class AuthenticationExample {
+public class BasicAuthentication {
 	  public void authenticationRequest(HttpServletRequest request, HttpServletResponse response) {
 		    FoursquareApi foursquareApi = new FoursquareApi();
 		    try {

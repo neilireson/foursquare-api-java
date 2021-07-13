@@ -1,5 +1,6 @@
-package fi.foyt.foursquare.example;
+package fi.foyt.foursquare.cli;
 
+import fi.foyt.foursquare.api.Endpoints;
 import fi.foyt.foursquare.api.FoursquareApi;
 import fi.foyt.foursquare.api.FoursquareApiException;
 import fi.foyt.foursquare.api.Result;
@@ -9,17 +10,27 @@ import fi.foyt.foursquare.api.entities.CompactVenue;
 import fi.foyt.foursquare.api.entities.VenuesSearchResult;
 import picocli.CommandLine;
 
+import java.util.Arrays;
+
 /**
- * Basic search example
+ * Command line interface
  *
  * @author rmangi
  * @author n.ireson@sheffield.ac.uk
  */
-public class BasicExample {
-
+@CommandLine.Command(name = "fsq-cli",
+        mixinStandardHelpOptions = true,
+        version = "1.0")
+public class FoursquareCli {
+    @CommandLine.Option(names = {"--fsq-endpoint"}, required = true, arity = "2",
+            description = "FourSquare endpoint, [group endpoint], e.g. venue search")
+    String[] endpoint;
 
     private static void venueSearch(FoursquareApi foursquareApi, String[] args) {
-        VenueSearchOptions options = CommandLine.populateCommand(new VenueSearchOptions(), args);
+        VenueSearchOptions options = new VenueSearchOptions();
+        CommandLine commandLine = new CommandLine(options);
+        commandLine.setUnmatchedArgumentsAllowed(true);
+        commandLine.parseArgs(args);
 
         try {
             // After client has been initialized we can make queries.
@@ -46,6 +57,7 @@ public class BasicExample {
 
     /**
      * see https://developer.foursquare.com/docs/build-with-foursquare/categories/
+     *
      * @param foursquareApi
      */
     private static void getCategories(FoursquareApi foursquareApi) {
@@ -61,13 +73,35 @@ public class BasicExample {
         }
     }
 
+
     public static void main(String[] args) {
+        FoursquareCli cli = new FoursquareCli();
+
+        CommandLine commandLine = new CommandLine(cli);
+        commandLine.setUnmatchedArgumentsAllowed(true);
+        commandLine.parseArgs(args);
+
+        Endpoints.Group endpointGroup = Endpoints.Group.valueOf(cli.endpoint[0]);
 
         // Initialize FoursquareApi.
         FoursquareApi foursquareApi = new FoursquareApi();
 
-//        venueSearch(foursquareApi, args);
+        switch (endpointGroup) {
+            case venue:
+                switch (Endpoints.Venue.valueOf(cli.endpoint[1])) {
+                    case search:
+                        venueSearch(foursquareApi, args);
+                        break;
+                    case categories:
+                        getCategories(foursquareApi);
+                        break;
+                    default:
+                        throw new UnsupportedOperationException("Cannot handle endpoint: " +
+                                Arrays.toString(cli.endpoint));
+                }
+            default:
+                throw new UnsupportedOperationException("Cannot handle endpoint group: " + cli.endpoint[0]);
+        }
 
-        getCategories(foursquareApi);
     }
 }
