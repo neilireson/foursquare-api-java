@@ -63,8 +63,17 @@ public class Category implements FoursquareEntity {
   }
 
   /**
+   * Returns parent category of this category
+   *
+   * @return parent category of this category
+   */
+  public Category getParent() {
+    return parent;
+  }
+
+  /**
    * Returns parents as array of Strings
-   * 
+   *
    * @return parents as array of Strings
    */
   public String[] getParents() {
@@ -93,6 +102,7 @@ public class Category implements FoursquareEntity {
   private String name;
   private String pluralName;
   private Icon icon;
+  private Category parent;
   private String[] parents;
   private Boolean primary;
   private Category[] categories;
