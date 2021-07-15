@@ -72,6 +72,13 @@ public class Category implements FoursquareEntity {
   }
 
   /**
+   * Sets parent category of this category
+   */
+  public void setParent(Category parent) {
+     this.parent = parent;
+  }
+
+  /**
    * Returns parents as array of Strings
    *
    * @return parents as array of Strings
