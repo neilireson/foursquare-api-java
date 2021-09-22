@@ -148,7 +148,6 @@ public class DefaultIOHandler extends IOHandler {
    * 
    * @param inputStream input stream to be readed
    * @return Stream's content
-   * @throws IOException 
    */
   private String readStream(InputStream inputStream) throws IOException {
     StringWriter responseWriter = new StringWriter();

@@ -58,7 +58,6 @@ public class FoursquareCli {
     /**
      * see https://developer.foursquare.com/docs/build-with-foursquare/categories/
      *
-     * @param foursquareApi
      */
     private static void getCategories(FoursquareApi foursquareApi) {
 

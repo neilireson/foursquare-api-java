@@ -23,8 +23,7 @@ public class VenuesAutocompleteResult implements FoursquareEntity {
 	
 	/**
 	 * Constructor requires an array of MiniVenues
-	 * @param venues
-	 */
+     */
 	public VenuesAutocompleteResult(MiniVenue[] venues) {
 		super();
 		this.venues = venues;

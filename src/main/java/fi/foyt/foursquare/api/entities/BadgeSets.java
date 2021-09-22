@@ -15,8 +15,7 @@ import fi.foyt.foursquare.api.FoursquareEntity;
 /**
  * Class representing BadgeSets
  * 
- * @see <a href="" target="_blank"></a>
- * 
+ *
  * @author Antti Leppä
  */
 public class BadgeSets implements FoursquareEntity {

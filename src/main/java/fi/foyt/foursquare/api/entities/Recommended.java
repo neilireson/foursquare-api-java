@@ -4,9 +4,7 @@ import fi.foyt.foursquare.api.FoursquareEntity;
 
 /**
  * Class representing Recommended entity
- * 
- * @see <a href="" target="_blank"></a>
- * 
+ *
  * @author Antti Leppä
  */
 public class Recommended implements FoursquareEntity {

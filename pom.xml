@@ -15,8 +15,20 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<java-source.version>1.8</java-source.version>
+		<java-target.version>1.8</java-target.version>
+
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
 		<maven.compile.encoding>UTF-8</maven.compile.encoding>
+
+		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+		<maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
+		<maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
+		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
 		<appengine.version>1.9.89</appengine.version>
 		<json.version>20210307</json.version>
@@ -69,135 +81,139 @@
 	</distributionManagement>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.3</version>
-				<configuration>
-					<source>7</source>
-					<target>7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
-				<configuration>
-					<includes>
-						<include>**/*.java</include>
-					</includes>
-					<parallel>methods</parallel>
-					<threadCount>10</threadCount>
-					<argLine>-Xms256m -Xmx512m -ea -Dfile.encoding=UTF-8</argLine>
-				</configuration>
-			</plugin>
 
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>2.8.2</version>
-				<dependencies>
-					<dependency>
-						<groupId>com.google.code.maven-svn-wagon</groupId>
-						<artifactId>maven-svn-wagon</artifactId>
-						<version>1.4</version>
-					</dependency>
-				</dependencies>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.4</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>jar-no-fork</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<configuration>
-					<failOnError>false</failOnError>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-		<extensions>
-			<extension>
-				<groupId>com.google.code.maven-svn-wagon</groupId>
-				<artifactId>maven-svn-wagon</artifactId>
-				<version>1.4</version>
-			</extension>
-		</extensions>
+		<defaultGoal>install</defaultGoal>
+
+		<pluginManagement>
+			<plugins>
+
+				<plugin>
+					<artifactId>maven-antrun-plugin</artifactId>
+					<version>${maven-antrun-plugin.version}</version>
+					<executions>
+						<execution>
+							<phase>install</phase>
+							<goals>
+								<goal>run</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>${maven-source-plugin.version}</version>
+					<executions>
+						<execution>
+							<id>attach-sources</id>
+							<phase>verify</phase>
+							<goals>
+								<goal>jar</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+
+				<!--            <plugin>-->
+				<!--                <artifactId>maven-shade-plugin</artifactId>-->
+				<!--                <version>${maven-shade-plugin.version}</version>-->
+				<!--                <executions>-->
+				<!--                    <execution>-->
+				<!--                        <phase>package</phase>-->
+				<!--                        <goals>-->
+				<!--                            <goal>shade</goal>-->
+				<!--                        </goals>-->
+				<!--                        <configuration>-->
+				<!--                            <shadedArtifactAttached>true</shadedArtifactAttached>-->
+				<!--                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
+
+				<!--                            <filters>-->
+				<!--                                &lt;!&ndash; Prevent "Invalid signature file digest for Manifest main attributes" &ndash;&gt;-->
+				<!--                                <filter>-->
+				<!--                                    <artifact>*:*</artifact>-->
+				<!--                                    <excludes>-->
+				<!--                                        <exclude>META-INF/*.SF</exclude>-->
+				<!--                                        <exclude>META-INF/*.DSA</exclude>-->
+				<!--                                        <exclude>META-INF/*.RSA</exclude>-->
+				<!--                                    </excludes>-->
+				<!--                                </filter>-->
+				<!--                            </filters>-->
+
+				<!--                            <transformers>-->
+				<!--                                <transformer-->
+				<!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+				<!--                                    <mainClass>uk.ac.shef.wit.active.SummaryStats</mainClass>-->
+				<!--                                </transformer>-->
+				<!--                            </transformers>-->
+
+				<!--                        </configuration>-->
+				<!--                    </execution>-->
+				<!--                </executions>-->
+				<!--            </plugin>-->
+
+				<plugin>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>${maven-compiler-plugin.version}</version>
+					<configuration>
+						<source>${java-source.version}</source>
+						<target>${java-target.version}</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-enforcer-plugin</artifactId>
+					<version>${maven-enforcer-plugin.version}</version>
+					<configuration>
+						<rules>
+							<dependencyConvergence/>
+						</rules>
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-site-plugin</artifactId>
+					<version>${maven-site-plugin.version}</version>
+					<configuration>
+						<reportPlugins>
+<!--							<plugin>-->
+<!--								<groupId>org.apache.maven.plugins</groupId>-->
+<!--								<artifactId>maven-project-info-reports-plugin</artifactId>-->
+<!--								<version>${maven-project-info-reports-plugin.version}</version>-->
+<!--							</plugin>-->
+							<plugin>
+								<groupId>org.apache.maven.plugins</groupId>
+								<artifactId>maven-javadoc-plugin</artifactId>
+								<version>${maven-javadoc-plugin.version}</version>
+								<reportSets>
+									<reportSet>
+										<id>PDF</id>
+										<reports>
+											<report>javadoc</report>
+										</reports>
+										<configuration>
+											<name>PDF</name>
+											<description>This is my Documentation in PDF</description>
+											<destDir>pdf</destDir>
+											<doclet>com.tarsec.javadoc.pdfdoclet.PDFDoclet</doclet>
+											<docletPath>${project.basedir}\..\tools\pdfdoclet-1.0.3-all.jar</docletPath>
+											<useStandardDocletOptions>false</useStandardDocletOptions>
+											<additionalparam>
+												-pdf javadoc.pdf
+											</additionalparam>
+										</configuration>
+									</reportSet>
+								</reportSets>
+							</plugin>
+						</reportPlugins>
+					</configuration>
+				</plugin>
+
+			</plugins>
+		</pluginManagement>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>release</id>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<!-- http://stackoverflow.com/a/22296107/122441 -->
-			<id>doclint-java8-disable</id>
-			<activation>
-				<jdk>[1.8,)</jdk>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<configuration>
-							<!-- http://blog.joda.org/2014/02/turning-off-doclint-in-jdk-8-javadoc.html -->
-							<additionalparam>-Xdoclint:none</additionalparam>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-	<reporting>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<configuration>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-		</plugins>
-	</reporting>
 
 	<issueManagement>
 		<url>https://code.google.com/p/foursquare-api-java/issues/</url>
