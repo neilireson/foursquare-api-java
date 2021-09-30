@@ -19,6 +19,7 @@ import java.io.StringWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.Inflater;
 import java.util.zip.InflaterInputStream;
@@ -155,7 +156,7 @@ public class DefaultIOHandler extends IOHandler {
     char[] buf = new char[1024];
     int l = 0;
 
-    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+    InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
     while ((l = inputStreamReader.read(buf)) > 0) {
       responseWriter.write(buf, 0, l);
     }

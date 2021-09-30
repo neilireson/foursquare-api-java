@@ -227,7 +227,7 @@ public class CompleteVenue extends CompactVenue {
             ", roles='" + roles + '\'' +
             ", restricted='" + restricted + '\'' +
             ", pageUpdates='" + pageUpdates + '\'' +
-            ", phrases='" + phrases + '\'' +
+            ", phrases='" + Arrays.toString(phrases) + '\'' +
             ",\nattributes='" + attributes + '\'' +
             ",\nstoreId='" + storeId + '\'' +
             '}';

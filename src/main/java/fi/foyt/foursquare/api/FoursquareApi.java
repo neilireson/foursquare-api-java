@@ -1727,7 +1727,7 @@ public class FoursquareApi {
      *
      * @author Antti Leppä / Blake Dy
      */
-    private class ApiRequestResponse {
+    private static class ApiRequestResponse {
 
         /**
          * Constructor

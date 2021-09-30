@@ -3,6 +3,7 @@ package fi.foyt.foursquare.api;
 import picocli.CommandLine;
 
 @CommandLine.Command(name = "fsq-venue-search",
+        showDefaultValues = true,
         mixinStandardHelpOptions = true,
         version = "1.0")
 public class VenueSearchOptions {

@@ -5,6 +5,7 @@ import static com.google.appengine.api.urlfetch.FetchOptions.Builder.doNotValida
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import com.google.appengine.api.urlfetch.HTTPMethod;
 import com.google.appengine.api.urlfetch.HTTPRequest;
@@ -41,7 +42,7 @@ public class GAEIOHandler extends IOHandler {
 					.getURLFetchService();
 			HTTPResponse response = service.fetch(httpRequest);
 
-			return new Response(new String(response.getContent(), "UTF-8"),
+			return new Response(new String(response.getContent(), StandardCharsets.UTF_8),
 					response.getResponseCode(), "");
 		} catch (MalformedURLException e) {
 			return new Response("", 400, "Malformed URL: " + url);

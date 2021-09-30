@@ -24,7 +24,7 @@ import static org.junit.Assert.*;
 public class Notifications {
   
   @Test
-  public final void testNotificationType() throws FoursquareApiException {
+  public final void testNotificationType() {
     assertEquals(NotificationType.Badge, NotificationType.getByName("badge"));
     assertEquals(NotificationType.Tip, NotificationType.getByName("tip"));
     assertEquals(NotificationType.TipAlert, NotificationType.getByName("tipAlert"));

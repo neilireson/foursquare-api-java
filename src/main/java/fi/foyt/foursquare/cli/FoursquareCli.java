@@ -19,6 +19,7 @@ import java.util.Arrays;
  * @author n.ireson@sheffield.ac.uk
  */
 @CommandLine.Command(name = "fsq-cli",
+        showDefaultValues = true,
         mixinStandardHelpOptions = true,
         version = "1.0")
 public class FoursquareCli {

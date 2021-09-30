@@ -57,7 +57,7 @@ public class FoursquareApi {
   }
 
   @Test
-  public final void testSetVersion() throws FoursquareApiException {
+  public final void testSetVersion() {
     fi.foyt.foursquare.api.FoursquareApi foursquareApi = TestUtils.getAnonymousFoursquareApi();
     foursquareApi.setVersion("20140131");
   }
@@ -101,7 +101,7 @@ public class FoursquareApi {
   }
   
   @Test
-  public final void testGetIOHandler() throws FoursquareApiException {
+  public final void testGetIOHandler() {
     fi.foyt.foursquare.api.FoursquareApi foursquareApi = TestUtils.getAuthenticatedFoursquareApi();
     assertEquals(foursquareApi.getIOHandler().getClass(), TestIO.class);
   }
