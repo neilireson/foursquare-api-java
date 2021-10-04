@@ -1,232 +1,223 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>fi.foyt</groupId>
-	<artifactId>foursquare-api</artifactId>
-	<packaging>jar</packaging>
-	<version>1.0.3-SNAPSHOT</version>
-	<name>Foursquare API</name>
-	<licenses>
-		<license>
-			<name>GNU LGPL v3</name>
-			<url>http://www.gnu.org/licenses/lgpl.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>fi.foyt</groupId>
+    <artifactId>foursquare-api</artifactId>
+    <packaging>jar</packaging>
+    <version>1.0.3-SNAPSHOT</version>
+    <name>Foursquare API</name>
+    <licenses>
+        <license>
+            <name>GNU LGPL v3</name>
+            <url>http://www.gnu.org/licenses/lgpl.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-		<java-source.version>1.8</java-source.version>
-		<java-target.version>1.8</java-target.version>
+        <java-source.version>1.8</java-source.version>
+        <java-target.version>1.8</java-target.version>
 
-		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
-		<maven.compile.encoding>UTF-8</maven.compile.encoding>
+        <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+        <maven.compile.encoding>UTF-8</maven.compile.encoding>
 
-		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
-		<maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
-		<maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
-		<maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
-		<maven-site-plugin.version>3.9.1</maven-site-plugin.version>
-		<maven-source-plugin.version>3.2.1</maven-source-plugin.version>
-		<maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-deploy-plugin.version>3.0.0-M1</maven-deploy-plugin.version>
+        <maven-javadoc-plugin.version>3.3.1</maven-javadoc-plugin.version>
+        <maven-project-info-reports-plugin.version>3.1.2</maven-project-info-reports-plugin.version>
+        <maven-site-plugin.version>3.9.1</maven-site-plugin.version>
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
-		<appengine.version>1.9.89</appengine.version>
-		<json.version>20210307</json.version>
-		<junit.version>4.13.2</junit.version>
-		<picocli.version>4.6.1</picocli.version>
-		<servlet.version>2.5</servlet.version>
+        <appengine.version>1.9.89</appengine.version>
+        <json.version>20210307</json.version>
+        <junit.version>4.13.2</junit.version>
+        <picocli.version>4.6.1</picocli.version>
+        <servlet.version>2.5</servlet.version>
 
-	</properties>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>${json.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.appengine</groupId>
-			<artifactId>appengine-api-1.0-sdk</artifactId>
-			<version>${appengine.version}</version>
-			<!-- not required by typical or Android usage. see https://github.com/clinejj/foursquare-api-java/issues/1 -->
-			<optional>true</optional>
-		</dependency>
+    <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.appengine</groupId>
+            <artifactId>appengine-api-1.0-sdk</artifactId>
+            <version>${appengine.version}</version>
+            <!-- not required by typical or Android usage. see https://github.com/clinejj/foursquare-api-java/issues/1 -->
+            <optional>true</optional>
+        </dependency>
 
-		<dependency>
-			<groupId>info.picocli</groupId>
-			<artifactId>picocli</artifactId>
-			<version>${picocli.version}</version>
-		</dependency>
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>${picocli.version}</version>
+        </dependency>
 
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>${servlet.version}</version>
-			<type>jar</type>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet.version}</version>
+            <type>jar</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
-	<distributionManagement>
-		<repository>
-			<id>foursquareapijava</id>
-			<url>svn:https://foursquare-api-java.googlecode.com/svn/repository</url>
-		</repository>
-	</distributionManagement>
+    <distributionManagement>
+        <repository>
+            <id>foursquareapijava</id>
+            <url>svn:https://foursquare-api-java.googlecode.com/svn/repository</url>
+        </repository>
+    </distributionManagement>
 
-	<build>
+    <build>
 
-		<defaultGoal>install</defaultGoal>
+        <defaultGoal>install</defaultGoal>
 
-		<pluginManagement>
-			<plugins>
+        <pluginManagement>
+            <plugins>
 
-				<plugin>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>${maven-antrun-plugin.version}</version>
-					<executions>
-						<execution>
-							<phase>install</phase>
-							<goals>
-								<goal>run</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+                <plugin>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${maven-antrun-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>run</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
-				<plugin>
-					<artifactId>maven-source-plugin</artifactId>
-					<version>${maven-source-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>attach-sources</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>jar</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>attach-sources</id>
+                            <phase>verify</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
 
-				<!--            <plugin>-->
-				<!--                <artifactId>maven-shade-plugin</artifactId>-->
-				<!--                <version>${maven-shade-plugin.version}</version>-->
-				<!--                <executions>-->
-				<!--                    <execution>-->
-				<!--                        <phase>package</phase>-->
-				<!--                        <goals>-->
-				<!--                            <goal>shade</goal>-->
-				<!--                        </goals>-->
-				<!--                        <configuration>-->
-				<!--                            <shadedArtifactAttached>true</shadedArtifactAttached>-->
-				<!--                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
+                <!--            <plugin>-->
+                <!--                <artifactId>maven-shade-plugin</artifactId>-->
+                <!--                <version>${maven-shade-plugin.version}</version>-->
+                <!--                <executions>-->
+                <!--                    <execution>-->
+                <!--                        <phase>package</phase>-->
+                <!--                        <goals>-->
+                <!--                            <goal>shade</goal>-->
+                <!--                        </goals>-->
+                <!--                        <configuration>-->
+                <!--                            <shadedArtifactAttached>true</shadedArtifactAttached>-->
+                <!--                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>-->
 
-				<!--                            <filters>-->
-				<!--                                &lt;!&ndash; Prevent "Invalid signature file digest for Manifest main attributes" &ndash;&gt;-->
-				<!--                                <filter>-->
-				<!--                                    <artifact>*:*</artifact>-->
-				<!--                                    <excludes>-->
-				<!--                                        <exclude>META-INF/*.SF</exclude>-->
-				<!--                                        <exclude>META-INF/*.DSA</exclude>-->
-				<!--                                        <exclude>META-INF/*.RSA</exclude>-->
-				<!--                                    </excludes>-->
-				<!--                                </filter>-->
-				<!--                            </filters>-->
+                <!--                            <filters>-->
+                <!--                                &lt;!&ndash; Prevent "Invalid signature file digest for Manifest main attributes" &ndash;&gt;-->
+                <!--                                <filter>-->
+                <!--                                    <artifact>*:*</artifact>-->
+                <!--                                    <excludes>-->
+                <!--                                        <exclude>META-INF/*.SF</exclude>-->
+                <!--                                        <exclude>META-INF/*.DSA</exclude>-->
+                <!--                                        <exclude>META-INF/*.RSA</exclude>-->
+                <!--                                    </excludes>-->
+                <!--                                </filter>-->
+                <!--                            </filters>-->
 
-				<!--                            <transformers>-->
-				<!--                                <transformer-->
-				<!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
-				<!--                                    <mainClass>uk.ac.shef.wit.active.SummaryStats</mainClass>-->
-				<!--                                </transformer>-->
-				<!--                            </transformers>-->
+                <!--                            <transformers>-->
+                <!--                                <transformer-->
+                <!--                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">-->
+                <!--                                    <mainClass>uk.ac.shef.wit.active.SummaryStats</mainClass>-->
+                <!--                                </transformer>-->
+                <!--                            </transformers>-->
 
-				<!--                        </configuration>-->
-				<!--                    </execution>-->
-				<!--                </executions>-->
-				<!--            </plugin>-->
+                <!--                        </configuration>-->
+                <!--                    </execution>-->
+                <!--                </executions>-->
+                <!--            </plugin>-->
 
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
-					<configuration>
-						<source>${java-source.version}</source>
-						<target>${java-target.version}</target>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java-source.version}</source>
+                        <target>${java-target.version}</target>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-enforcer-plugin</artifactId>
-					<version>${maven-enforcer-plugin.version}</version>
-					<configuration>
-						<rules>
-							<dependencyConvergence/>
-						</rules>
-					</configuration>
-				</plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <configuration>
+                        <rules>
+                            <dependencyConvergence/>
+                        </rules>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-site-plugin</artifactId>
-					<version>${maven-site-plugin.version}</version>
-					<configuration>
-						<reportPlugins>
-<!--							<plugin>-->
-<!--								<groupId>org.apache.maven.plugins</groupId>-->
-<!--								<artifactId>maven-project-info-reports-plugin</artifactId>-->
-<!--								<version>${maven-project-info-reports-plugin.version}</version>-->
-<!--							</plugin>-->
-							<plugin>
-								<groupId>org.apache.maven.plugins</groupId>
-								<artifactId>maven-javadoc-plugin</artifactId>
-								<version>${maven-javadoc-plugin.version}</version>
-								<reportSets>
-									<reportSet>
-										<id>PDF</id>
-										<reports>
-											<report>javadoc</report>
-										</reports>
-										<configuration>
-											<name>PDF</name>
-											<description>This is my Documentation in PDF</description>
-											<destDir>pdf</destDir>
-											<doclet>com.tarsec.javadoc.pdfdoclet.PDFDoclet</doclet>
-											<docletPath>${project.basedir}\..\tools\pdfdoclet-1.0.3-all.jar</docletPath>
-											<useStandardDocletOptions>false</useStandardDocletOptions>
-											<additionalparam>
-												-pdf javadoc.pdf
-											</additionalparam>
-										</configuration>
-									</reportSet>
-								</reportSets>
-							</plugin>
-						</reportPlugins>
-					</configuration>
-				</plugin>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <reportSets>
+                    <reportSet>
+                        <id>PDF</id>
+                        <reports>
+                            <report>javadoc</report>
+                        </reports>
+                        <configuration>
+                            <name>PDF</name>
+                            <description>This is my Documentation in PDF</description>
+                            <destDir>pdf</destDir>
+                            <doclet>com.tarsec.javadoc.pdfdoclet.PDFDoclet</doclet>
+                            <docletPath>${project.basedir}\..\tools\pdfdoclet-1.0.3-all.jar</docletPath>
+                            <useStandardDocletOptions>false</useStandardDocletOptions>
+                            <additionalparam>
+                                -pdf javadoc.pdf
+                            </additionalparam>
+                        </configuration>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
-			</plugins>
-		</pluginManagement>
-	</build>
-
-	<issueManagement>
-		<url>https://code.google.com/p/foursquare-api-java/issues/</url>
-		<system>Google Code</system>
-	</issueManagement>
-	<scm>
-		<url>http://foursquare-api-java.googlecode.com/svn/</url>
-		<developerConnection>scm:svn:https://foursquare-api-java.googlecode.com/svn/trunk</developerConnection>
-	</scm>
-	<organization>
-		<name>Foyt</name>
-		<url>http://www.foyt.fi</url>
-	</organization>
-	<url>http://foursquare-api-java.googlecode.com/</url>
-	<description>Foursquare V2 API for Java</description>
+    <issueManagement>
+        <url>https://code.google.com/p/foursquare-api-java/issues/</url>
+        <system>Google Code</system>
+    </issueManagement>
+    <scm>
+        <url>http://foursquare-api-java.googlecode.com/svn/</url>
+        <developerConnection>scm:svn:https://foursquare-api-java.googlecode.com/svn/trunk</developerConnection>
+    </scm>
+    <organization>
+        <name>Foyt</name>
+        <url>http://www.foyt.fi</url>
+    </organization>
+    <url>http://foursquare-api-java.googlecode.com/</url>
+    <description>Foursquare V2 API for Java</description>
 </project>
