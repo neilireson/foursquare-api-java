@@ -18,7 +18,7 @@ import java.util.Arrays;
  * @author rmangi
  * @author n.ireson@sheffield.ac.uk
  */
-@CommandLine.Command(name = "fsq-cli",
+@CommandLine.Command(name = "FoursquareCli",
         showDefaultValues = true,
         mixinStandardHelpOptions = true,
         version = "1.0")
