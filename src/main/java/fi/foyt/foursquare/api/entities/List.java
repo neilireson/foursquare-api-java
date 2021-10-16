@@ -2,9 +2,9 @@
  * FoursquareAPI - Foursquare API for Java
  * Copyright (C) 2014 - Blake Dy / Wallaby
  * http://walla.by
- * 
- * License: 
- * 
+ *
+ * License:
+ *
  * Licensed under GNU Lesser General Public License Version 3 or later (the "LGPL")
  * http://www.gnu.org/licenses/lgpl.html
  */
@@ -15,15 +15,15 @@ import fi.foyt.foursquare.api.FoursquareEntity;
 
 /**
  * Class representing List entity
- * 
+ *
  * @see <a href="https://developer.foursquare.com/docs/responses/list.html" target="_blank">https://developer.foursquare.com/docs/responses/list.html</a>
- * 
+ *
  * @author Blake Dy
  */
 public class List implements FoursquareEntity {
 
   private static final long serialVersionUID = -7255898184182462517L;
-  
+
   // TODO
   private String id;
   private String name;
@@ -43,10 +43,11 @@ public class List implements FoursquareEntity {
   private ListGroup listItems;
   private Long createdAt;
   private Long updatedAt;
-  private String entities;
   private Boolean isPublic;
   private Boolean logView;
   private CompleteTip tip;
+
+  private PhraseEntity[] entities;
 
   public void setPublic(Boolean isPublic) {
     this.isPublic = isPublic;
