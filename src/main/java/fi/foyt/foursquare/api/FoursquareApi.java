@@ -73,21 +73,25 @@ import fi.foyt.foursquare.api.io.Response;
 public class FoursquareApi {
 
     private static final String DEFAULT_VERSION = "20140131";
-    public static final String CLIENT_ID_PROPERTY_KEY = "foursquare.client.id";
-    public static final String CLIENT_SECRET_PROPERTY_KEY = "foursquare.client.secret";
-    public static final String REDIRECT_URL_PROPERTY_KEY = "foursquare.redirect.url";
-    public static final String OAUTH_TOKEN_PROPERTY_KEY = "foursquare.oauth.token";
 
     /**
-     * Attempt to get the client credentials from JAVA VM Options
+     * Constructor
+     *
+     * Attempt to acquire the client credentials from JAVA VM Options
      * -Dfoursquare.client.id=XXX
      * -Dfoursquare.client.secret=XXX
      * -Dfoursquare.redirect.url=XXX
      */
     public FoursquareApi() {
-        this(System.getProperty(CLIENT_ID_PROPERTY_KEY),
-                System.getProperty(CLIENT_SECRET_PROPERTY_KEY),
-                System.getProperty(REDIRECT_URL_PROPERTY_KEY));
+        this(new Credentials());
+    }
+
+    /**
+     *
+     * @param credentials The credentials
+     */
+    public FoursquareApi(Credentials credentials) {
+        this(credentials.getClientId(), credentials.getClientSecret(), credentials.getRedirectUrl());
     }
 
     /**
