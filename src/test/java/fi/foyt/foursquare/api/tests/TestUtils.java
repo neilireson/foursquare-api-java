@@ -6,10 +6,10 @@ import java.io.InputStream;
 
 import fi.foyt.foursquare.api.FoursquareApi;
 
-import static fi.foyt.foursquare.api.FoursquareApi.CLIENT_ID_PROPERTY_KEY;
-import static fi.foyt.foursquare.api.FoursquareApi.CLIENT_SECRET_PROPERTY_KEY;
-import static fi.foyt.foursquare.api.FoursquareApi.REDIRECT_URL_PROPERTY_KEY;
-import static fi.foyt.foursquare.api.FoursquareApi.OAUTH_TOKEN_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.Credentials.CLIENT_ID_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.Credentials.CLIENT_SECRET_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.Credentials.REDIRECT_URL_PROPERTY_KEY;
+import static fi.foyt.foursquare.api.Credentials.OAUTH_TOKEN_PROPERTY_KEY;
 
 public class TestUtils {
 
@@ -18,16 +18,16 @@ public class TestUtils {
     foursquareApi.setSkipNonExistingFields(false);
     return foursquareApi;
   }
-  
+
   public static FoursquareApi getAuthenticatedFoursquareApi() {
     FoursquareApi foursquareApi = new FoursquareApi(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL, OAUTH, new TestIO());
     foursquareApi.setSkipNonExistingFields(false);
     return foursquareApi;
   }
-  
+
   public static byte[] getFileData(String path) throws IOException {
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    
+
     byte[] buf = new byte[1024];
     InputStream in = TestUtils.class.getResourceAsStream(path);
 
@@ -35,7 +35,7 @@ public class TestUtils {
     while ((l = in.read(buf)) > 0) {
       bos.write(buf, 0, l);
     }
-    
+
     return bos.toByteArray();
   }
 
