@@ -33,7 +33,7 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
 
         <appengine.version>1.9.92</appengine.version>
-        <json.version>20210307</json.version>
+        <json.version>20211205</json.version>
         <junit.version>4.13.2</junit.version>
         <picocli.version>4.6.2</picocli.version>
         <servlet.version>2.5</servlet.version>
